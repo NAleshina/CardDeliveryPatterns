@@ -1,0 +1,1 @@
+# CardDeliveryPatterns [![Build status](https://ci.appveyor.com/api/projects/status/xjllyrvjxof1d71b?svg=true)](https://ci.appveyor.com/project/NAleshina/carddeliverypatterns)
