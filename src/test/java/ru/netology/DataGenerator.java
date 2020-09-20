@@ -24,6 +24,6 @@ public class DataGenerator {
     private static String getRandomCity(){
         List<String> cities = Arrays.asList("Благовещенск", "Владивосток", "Абакан", "Саратов", "Великий Новгород", "Воронеж", "Нарьян-Мар", "Омск");
         Random rnd = new Random();
-        return cities.get(rnd.nextInt(cities.size()));
+        return cities.get(rnd.nextInt(cities.size()-1));
     }
 }
