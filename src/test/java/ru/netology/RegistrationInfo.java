@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-public class RegistrationByCardInfo {
+public class RegistrationInfo {
     private final String name;
     private final String city;
     private final String phone;

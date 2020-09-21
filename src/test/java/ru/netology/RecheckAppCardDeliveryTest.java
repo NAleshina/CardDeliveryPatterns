@@ -3,15 +3,14 @@ package ru.netology;
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RecheckAppCardDeliveryTest {
     @Test
     void shouldCardDeliveryWithAllData() {
-        String DateToEnter = LocalDate.now().plusDays(7).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+        String DateToEnter = DataGenerator.getRandomDate(5);
         open("http://localhost:9999");
         $("[placeholder='Город']").setValue(DataGenerator.Registration.generateData("ru").getCity());
         $("[data-test-id=date] input.input__control").doubleClick().sendKeys(Keys.BACK_SPACE);
@@ -26,7 +25,7 @@ public class RecheckAppCardDeliveryTest {
     }
 
     @Test
-    void shouldCardDeliveryWithoutCity(){
+    void shouldCardDeliveryWithoutCity() {
         open("http://localhost:9999");
         $("[name='name']").setValue(DataGenerator.Registration.generateData("ru").getName());
         $("[name='phone']").setValue(DataGenerator.Registration.generateData("ru").getPhone());
@@ -36,7 +35,7 @@ public class RecheckAppCardDeliveryTest {
     }
 
     @Test
-    void shouldCardDeliveryWithoutName(){
+    void shouldCardDeliveryWithoutName() {
         open("http://localhost:9999");
         $("[placeholder='Город']").setValue(DataGenerator.Registration.generateData("ru").getCity());
         $("[name='phone']").setValue(DataGenerator.Registration.generateData("ru").getPhone());
@@ -46,7 +45,7 @@ public class RecheckAppCardDeliveryTest {
     }
 
     @Test
-    void shouldCardDeliveryWithEngName(){
+    void shouldCardDeliveryWithEngName() {
         open("http://localhost:9999");
         $("[placeholder='Город']").setValue(DataGenerator.Registration.generateData("ru").getCity());
         $("[name='name']").setValue("Cavendish Henry");
@@ -57,7 +56,7 @@ public class RecheckAppCardDeliveryTest {
     }
 
     @Test
-    void shouldCardDeliveryWithRusName(){
+    void shouldCardDeliveryWithRusName() {
         open("http://localhost:9999");
         $("[placeholder='Город']").setValue(DataGenerator.Registration.generateData("ru").getCity());
         $("[name='name']").setValue("Семёнов Роман");
@@ -68,7 +67,7 @@ public class RecheckAppCardDeliveryTest {
     }
 
     @Test
-    void shouldCardDeliveryWithoutPhone(){
+    void shouldCardDeliveryWithoutPhone() {
         open("http://localhost:9999");
         $("[placeholder='Город']").setValue(DataGenerator.Registration.generateData("ru").getCity());
         $("[name='name']").setValue(DataGenerator.Registration.generateData("ru").getName());
@@ -78,7 +77,7 @@ public class RecheckAppCardDeliveryTest {
     }
 
     @Test
-    void shouldCardDeliveryWithoutCheckbox(){
+    void shouldCardDeliveryWithoutCheckbox() {
         open("http://localhost:9999");
         $("[placeholder='Город']").setValue(DataGenerator.Registration.generateData("ru").getCity());
         $("[name='name']").setValue(DataGenerator.Registration.generateData("ru").getName());
