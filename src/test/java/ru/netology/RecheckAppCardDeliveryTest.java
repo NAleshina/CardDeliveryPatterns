@@ -1,6 +1,10 @@
 package ru.netology;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
@@ -8,6 +12,16 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RecheckAppCardDeliveryTest {
+
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
+
     @Test
     void shouldCardDeliveryWithAllData() {
         String DateToEnter = DataGenerator.getRandomDate(5);
@@ -63,7 +77,7 @@ public class RecheckAppCardDeliveryTest {
         $("[name='phone']").setValue(DataGenerator.Registration.generateData("ru").getPhone());
         $("[class=checkbox__box]").click();
         $(".button_view_extra").click();
-        $("[data-test-id=name] span.input__sub").shouldHave(exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
+        $(".notification_status_ok .notification__content").waitUntil(visible, 5000).shouldHave(text("Встреча успешно запланирована на "));
     }
 
     @Test
